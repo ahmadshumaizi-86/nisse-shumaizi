@@ -41,15 +41,15 @@ jobs:
       - name: Deliver Executable Artifact to Deployment Folder
         shell: cmd
         run: |
-          if not exist "C:\RajWork\2026\JIM\SpringBoot\deploy-bin" (
-              mkdir "C:\RajWork\2026\JIM\SpringBoot\deploy-bin"
-          )
+          if not exist "C:\nisse_deployment" (
+              mkdir "C:\nisse_deployment"
+          )n
           echo Copying production artifact...
           copy /Y "C:\springboottraining-shumaizi\nisse_shumaizi\target\*.jar" "C:\nisse_deployment"
 
       - name: Automatically Start Spring Boot Application
         shell: cmd
         run: |
-          cd /d "C:\springboottraining-shumaizi\nisse_shumaizi"
+          cd /d "C:\nisse_deployment"
           echo Starting the new application version in the background...
           for %%i in (*.jar) do start /B javaw -jar "%%i"
